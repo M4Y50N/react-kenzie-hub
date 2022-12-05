@@ -41,6 +41,9 @@ export const Global = createGlobalStyle`
         font-size: 62.5%;
     }
     
+    #root{
+        height: 100%;
+    }
 
     /* width */
     ::-webkit-scrollbar {
@@ -49,12 +52,10 @@ export const Global = createGlobalStyle`
     /* Track */
     ::-webkit-scrollbar-track {
         background: var(--gray-0);
-        /* border-radius: 1.6rem; */
     }
     /* Handle */
     ::-webkit-scrollbar-thumb {
         background: var(--color-primary-focus);
-        /* border-radius: 1.6rem; */
     }
     /* Handle on hover */
     ::-webkit-scrollbar-thumb:hover {

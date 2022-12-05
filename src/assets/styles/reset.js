@@ -18,16 +18,15 @@ export const Reset = createGlobalStyle`
         color: var(--color-text);
         -webkit-font-smoothing: antialiased;
         overflow-x: hidden;
-        transition: all 0.3s ease;
+    
     }
 
-    body, input, button, textarea {
+    /* body, input, button, textarea {
         font-family: var(--font-family);
         font-size: 1.6rem;
-    }
+    } */
     h1, h2, h3, h4, h5, h6, strong {
         font-weight: 500;
-        transition: all 0.3s ease;
     }
 
     button{

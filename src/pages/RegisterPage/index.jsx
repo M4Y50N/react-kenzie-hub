@@ -1,11 +1,6 @@
-import React from "react";
+//Components
+import { Form } from "../../components/Form";
 
-export class RegisterPage extends React.Component {
-	render() {
-		return (
-			<>
-				<h1>Sou Rangin page</h1>
-			</>
-		);
-	}
-}
+export const RegisterPage = () => {
+	return <Form type={"register"} />;
+};

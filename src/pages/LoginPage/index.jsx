@@ -1,11 +1,8 @@
-import React from "react";
+//Components
+import { useState } from "react";
+import { Form } from "../../components/Form";
 
-export class LoginPage extends React.Component {
-	render() {
-		return (
-			<>
-				<h1>Sou langin page</h1>
-			</>
-		);
-	}
-}
+export const LoginPage = () => {
+	const [form, setForm] = useState({});
+	return <Form type={"login"} form={form} setForm={setForm} />;
+};
