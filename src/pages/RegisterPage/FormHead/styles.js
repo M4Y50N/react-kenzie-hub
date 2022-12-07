@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const StyledFormHead = styled.div`
-	width: 37rem;
+	width: 100%;
+	max-width: 37rem;
 
 	margin: 0 auto 2rem;
 
