@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 //Styled Components
@@ -11,19 +11,25 @@ import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
 
 import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 import { api } from "../../api";
-import { StyledInput } from "../../components/Input/styles";
 
 export const LoginPage = () => {
-	const { register, handleSubmit } = useForm();
-
 	const loginSchema = yup.object().shape({
 		email: yup
 			.string()
 			.required("O email é obrigatório")
-			.email("É necessário fornecer um email válido"),
+			.email("Digite um email válido"),
 		password: yup.string().required("A senha é obrigatória"),
+	});
+
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm({
+		resolver: yupResolver(loginSchema),
 	});
 
 	const submit = (data) => {
@@ -39,21 +45,22 @@ export const LoginPage = () => {
 				<h2>Login</h2>
 
 				<Label htmlFor="email" children="Email" />
-				<StyledInput
+				<Input
 					type="email"
 					name="email"
 					id="email"
 					placeholder="Digite aqui seu email"
-					{...register("email")}
+					register={register}
 				/>
+				{errors.email?.message && <p>{errors.email.message}</p>}
 
 				<Label htmlFor="password" children="Senha" />
-				<StyledInput
+				<Input
 					type="password"
 					name="password"
 					id="password"
 					placeholder="Digite aqui sua senha"
-					{...register("password")}
+					register={register}
 				/>
 
 				<Button type="submit">Entrar</Button>
