@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 //Styled Components
 import { Main } from "../../assets/styles/Main";
 import { Title } from "../../assets/styles/Typography";
@@ -13,9 +13,13 @@ import { Button } from "../../components/Button";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { api } from "../../api";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export const LoginPage = () => {
+	const { login, disable } = useContext(AuthContext),
+		[loading, setLoading] = useState(true);
+	const navigate = useNavigate();
+
 	const loginSchema = yup.object().shape({
 		email: yup
 			.string()
@@ -32,16 +36,26 @@ export const LoginPage = () => {
 		resolver: yupResolver(loginSchema),
 	});
 
-	const submit = (data) => {
-		console.log(data);
-	};
+	useEffect(() => {
+		const token = localStorage.getItem("@TOKEN");
+
+		if (token) {
+			navigate("/dashboard", { replace: true });
+		}
+
+		setLoading(false);
+	}, [navigate]);
+
+	if (loading) {
+		return null;
+	}
 
 	return (
 		<Main>
 			<Title Position={"center"} Padding={"form-title"}>
 				Kenzie Hub
 			</Title>
-			<Form onSubmit={handleSubmit(submit)} noValidate>
+			<Form onSubmit={handleSubmit(login)} noValidate>
 				<h2>Login</h2>
 
 				<Label htmlFor="email" children="Email" />
@@ -63,7 +77,9 @@ export const LoginPage = () => {
 					register={register}
 				/>
 
-				<Button type="submit">Entrar</Button>
+				<Button disable={disable} type="submit">
+					Entrar
+				</Button>
 
 				<p>Ainda não possui conta?</p>
 

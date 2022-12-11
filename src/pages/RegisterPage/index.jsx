@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 //Styled Components
 import { Main } from "../../assets/styles/Main";
@@ -7,13 +7,20 @@ import { FormContainer as Form } from "../../components/Form/styles";
 import { Label } from "../../components/Label";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
+import { Select } from "../../components/Select";
 import { FormHead } from "./FormHead";
 
 import { api } from "../../api";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useNavigate } from "react-router-dom";
 
 export const RegisterPage = () => {
+	const [disable, setDisable] = useState(false),
+		[loading, setLoading] = useState(true);
+	const navigate = useNavigate();
+
+	//Form
 	const registerSchema = yup.object().shape({
 		name: yup
 			.string()
@@ -28,19 +35,57 @@ export const RegisterPage = () => {
 		confirm_password: yup.string().required("A senha é obrigatória"),
 		bio: yup.string().max(500, "A bio pode ter no máximo 500 caracteres"),
 		contact: yup.string().required("O contato é obrigatório"),
+		course_module: yup.string().required("Escolha uma opção válida"),
 	});
 
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
+		setValue,
+		reset,
 	} = useForm({
 		mode: "onChange",
 		resolver: yupResolver(registerSchema),
 	});
 
-	const submit = (data) => {
-		console.log(data);
+	//All select options
+	const options = [
+		{ value: "Primeiro módulo(Introdução ao HTML, JS e CSS)" },
+		{ value: "Segundo módulo(Frontend Avançado)" },
+		{ value: "Terceiro módulo(Introdução ao Backend)" },
+		{ value: "Quarto módulo(Backend Avançado)" },
+	];
+
+	useEffect(() => {
+		const token = localStorage.getItem("@TOKEN");
+
+		if (token) {
+			navigate("/dashboard");
+		}
+		setLoading(false);
+	}, [navigate]);
+
+	if (loading) {
+		return null;
+	}
+
+	//Create user
+	const submit = async (data) => {
+		try {
+			setDisable(true);
+			const response = await api.post("/users", data);
+
+			setTimeout(navigate("/login"), 1000);
+		} catch (error) {
+			console.log(error);
+			reset({
+				password: "",
+				confirm_password: "",
+			});
+		} finally {
+			setTimeout(setDisable(false), 1000);
+		}
 	};
 
 	return (
@@ -98,7 +143,7 @@ export const RegisterPage = () => {
 
 				<Label htmlFor="bio">Bio</Label>
 				<Input
-					type="bio"
+					type="text"
 					name="bio"
 					id="bio"
 					placeholder="Fale sobre você"
@@ -109,7 +154,7 @@ export const RegisterPage = () => {
 
 				<Label htmlFor="contact">Contato</Label>
 				<Input
-					type="contact"
+					type="text"
 					name="contact"
 					id="contact"
 					placeholder="Opção de contato"
@@ -117,7 +162,22 @@ export const RegisterPage = () => {
 				/>
 				{errors.contact?.message && <p>{errors.contact.message}</p>}
 
-				<Button type="submit">Cadastrar</Button>
+				<Label htmlFor="course_module">Selecionar Módulo</Label>
+				<Select
+					type="text"
+					name="course_module"
+					id="course_module"
+					placeholder="Escolha uma opção"
+					setValue={setValue}
+					options={options}
+					register={register}
+				/>
+
+				{errors.course_module?.message && <p>{errors.course_module.message}</p>}
+
+				<Button type="submit" disable={disable}>
+					Cadastrar
+				</Button>
 			</Form>
 		</Main>
 	);
