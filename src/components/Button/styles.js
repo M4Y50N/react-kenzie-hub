@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const StyledButton = styled.button`
 	font-size: var(--headline);
@@ -11,4 +11,17 @@ export const StyledButton = styled.button`
 	&:hover {
 		background-color: var(--color-primary-focus);
 	}
+
+	${({ disable }) => {
+		return disable
+			? css`
+					pointer-events: none;
+					background-color: var(--gray-50);
+
+					&:hover {
+						background-color: var(--gray-20);
+					}
+			  `
+			: false;
+	}}
 `;
