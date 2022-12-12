@@ -5,6 +5,7 @@ export const Button = ({
 	name,
 	onClick,
 	disable,
+	Padding,
 	CustomColor,
 	CustomColorHover,
 	children,
@@ -15,6 +16,7 @@ export const Button = ({
 				type={type}
 				name={name}
 				disable={disable}
+				Padding={Padding}
 				CustomColor={CustomColor}
 				CustomColorHover={CustomColorHover}
 				onClick={onClick}

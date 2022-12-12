@@ -60,7 +60,7 @@ export const StyledSelect = styled.div`
 			flex-direction: column;
 
 			width: 100%;
-			height: 177px;
+			max-height: 177px;
 			overflow-y: auto;
 			position: absolute;
 			${({ BottomPos }) => {

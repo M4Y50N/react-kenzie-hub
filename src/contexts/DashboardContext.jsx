@@ -29,7 +29,7 @@ export const DashboardProvider = ({ children }) => {
 	}, []);
 
 	return (
-		<DashboardContext.Provider value={{ userInfo, loading }}>
+		<DashboardContext.Provider value={{ userInfo, setUserInfo, loading }}>
 			{children}
 		</DashboardContext.Provider>
 	);

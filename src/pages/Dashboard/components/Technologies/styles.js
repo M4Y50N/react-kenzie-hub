@@ -15,9 +15,16 @@ export const StyledUl = styled.ul`
 	& > li {
 		padding: 1.7rem 1rem;
 		display: flex;
+		align-items: center;
 		justify-content: space-between;
 		border-radius: var(--radius-2);
 		background-color: var(--gray-150);
+
+		& > div {
+			display: flex;
+			align-items: center;
+			column-gap: 0.7rem;
+		}
 	}
 
 	& > li:hover {

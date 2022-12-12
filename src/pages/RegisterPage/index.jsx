@@ -74,7 +74,7 @@ export const RegisterPage = () => {
 	const submit = async (data) => {
 		try {
 			setDisable(true);
-			const response = await api.post("/users", data);
+			await api.post("/users", data);
 
 			setTimeout(navigate("/login"), 1000);
 		} catch (error) {
@@ -171,11 +171,11 @@ export const RegisterPage = () => {
 
 				<Label htmlFor="course_module">Selecionar Módulo</Label>
 				<Select
-					type="text"
 					name="course_module"
 					id="course_module"
 					placeholder="Escolha uma opção"
 					setValue={setValue}
+					attribute={"course_module"}
 					options={options}
 					register={register}
 				/>
