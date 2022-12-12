@@ -76,7 +76,7 @@ export const RegisterPage = () => {
 			setDisable(true);
 			await api.post("/users", data);
 
-			setTimeout(navigate("/login"), 1000);
+			setTimeout(navigate("/"), 1000);
 		} catch (error) {
 			console.log(error);
 			reset({
