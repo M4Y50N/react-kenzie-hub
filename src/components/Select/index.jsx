@@ -8,6 +8,7 @@ export const Select = ({
 	name,
 	placeholder,
 	setValue,
+	attribute,
 	options,
 	register,
 }) => {
@@ -18,7 +19,7 @@ export const Select = ({
 	//Get option when click in select options
 	const selectOption = (event) => {
 		selectedOption.current = event.target.textContent;
-		setValue("course_module", selectedOption.current, { shouldValidate: true });
+		setValue(attribute, selectedOption.current, { shouldValidate: true });
 	};
 
 	return (

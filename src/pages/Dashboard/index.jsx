@@ -1,1 +1,28 @@
-export const Dashboard = () => <h1>Dashboard</h1>;
+import { useContext, useState } from "react";
+//Components
+import { Header } from "../../components/Header";
+import { Modal } from "../../components/Modal";
+import { Technologies } from "./components/Technologies";
+import { UserInfo } from "./components/UserInfo";
+
+import { DashboardContext } from "../../contexts/DashboardContext";
+
+export const Dashboard = () => {
+	const { loading } = useContext(DashboardContext),
+		[modalState, setModalState] = useState(false);
+
+	if (loading) {
+		return null;
+	}
+
+	return (
+		<>
+			{modalState && <Modal setModalState={setModalState} />}
+
+			<Header />
+
+			<UserInfo />
+			<Technologies setModalState={setModalState} />
+		</>
+	);
+};

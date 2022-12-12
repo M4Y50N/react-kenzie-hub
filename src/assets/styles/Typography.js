@@ -3,7 +3,12 @@ import styled, { css } from "styled-components";
 export const Title = styled.h1`
 	font-weight: 600;
 	font-size: var(--title);
-	color: var(--color-primary);
+
+	${({ Color }) => {
+		return css`
+			color: var(${Color});
+		`;
+	}}
 
 	${({ Position }) => {
 		switch (Position) {

@@ -1,25 +1,10 @@
-import styled, { css, keyframes } from "styled-components";
+import styled, { css } from "styled-components";
 
 import downarrow from "../../assets/img/down-arrow-svgrepo-com.svg";
-
-const appearAnimation = keyframes`
-    from{
-        transform: translateY(-10px);
-    }
-    to{
-        transform: translateY(0px);
-    }
-`;
-
-const disappearAnimation = keyframes`
-    from{
-        transform: translateY(0px);
-        opacity: 1;
-    }to{
-        transform: translateY(-10px);
-        opacity: 0;
-    }
-`;
+import {
+	appearAnimation,
+	disappearAnimation,
+} from "../../assets/styles/Animation";
 
 export const StyledSelect = styled.div`
 	position: relative;
@@ -75,7 +60,7 @@ export const StyledSelect = styled.div`
 			flex-direction: column;
 
 			width: 100%;
-			height: 177px;
+			max-height: 177px;
 			overflow-y: auto;
 			position: absolute;
 			${({ BottomPos }) => {
