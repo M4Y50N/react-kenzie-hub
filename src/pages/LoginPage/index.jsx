@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 //Styled Components
@@ -16,8 +16,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { AuthContext } from "../../contexts/AuthContext";
 
 export const LoginPage = () => {
-	const { login, disable } = useContext(AuthContext),
-		[loading, setLoading] = useState(true);
+	const { login, disable, loading, setLoading } = useContext(AuthContext);
 
 	const navigate = useNavigate();
 
@@ -45,7 +44,7 @@ export const LoginPage = () => {
 		}
 
 		setLoading(false);
-	}, [navigate]);
+	}, [navigate, setLoading]);
 
 	if (loading) {
 		return null;

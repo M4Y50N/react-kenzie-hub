@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+import { useContext, useEffect } from "react";
 //Styled Components
 import { Main } from "../../assets/styles/Main";
 //Components
@@ -10,44 +9,22 @@ import { Button } from "../../components/Button";
 import { Select } from "../../components/Select";
 import { Head } from "../../components/Head";
 
-import { api } from "../../api";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
+import { RegisterContext } from "../../contexts/RegisterContext";
 
 export const RegisterPage = () => {
-	const [disable, setDisable] = useState(false),
-		[loading, setLoading] = useState(true);
-	const navigate = useNavigate();
-
-	//Form
-	const registerSchema = yup.object().shape({
-		name: yup
-			.string()
-			.required("O nome é obrigatório")
-			.min(3, "O nome precisa ter no minimo 3 caracteres")
-			.max(255, "O nome pode ter no máximo 255 caracteres"),
-		email: yup
-			.string()
-			.required("O email é obrigatório")
-			.email("Digite um email válido"),
-		password: yup.string().required("A senha é obrigatória"),
-		confirm_password: yup.string().required("A senha é obrigatória"),
-		bio: yup.string().max(500, "A bio pode ter no máximo 500 caracteres"),
-		contact: yup.string().required("O contato é obrigatório"),
-		course_module: yup.string().required("Escolha uma opção válida"),
-	});
-
 	const {
+		registerUser,
+		disable,
+		loading,
+		setLoading,
 		register,
 		handleSubmit,
-		formState: { errors },
+		errors,
 		setValue,
-		reset,
-	} = useForm({
-		mode: "onChange",
-		resolver: yupResolver(registerSchema),
-	});
+	} = useContext(RegisterContext);
+
+	const navigate = useNavigate();
 
 	//All select options
 	const options = [
@@ -64,29 +41,11 @@ export const RegisterPage = () => {
 			navigate("/dashboard");
 		}
 		setLoading(false);
-	}, [navigate]);
+	}, [navigate, setLoading]);
 
 	if (loading) {
 		return null;
 	}
-
-	//Create user
-	const submit = async (data) => {
-		try {
-			setDisable(true);
-			await api.post("/users", data);
-
-			setTimeout(navigate("/"), 1000);
-		} catch (error) {
-			console.log(error);
-			reset({
-				password: "",
-				confirm_password: "",
-			});
-		} finally {
-			setTimeout(setDisable(false), 1000);
-		}
-	};
 
 	return (
 		<Main>
@@ -99,7 +58,7 @@ export const RegisterPage = () => {
 					navigate("/");
 				}}
 			/>
-			<Form onSubmit={handleSubmit(submit)} noValidate>
+			<Form onSubmit={handleSubmit(registerUser)} noValidate>
 				<h2>Crie sua conta</h2>
 				<p>Rapido grátis, vamos nessa</p>
 

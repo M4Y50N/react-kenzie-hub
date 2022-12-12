@@ -8,20 +8,10 @@ import { Button } from "../../../../components/Button";
 
 import { DashboardContext } from "../../../../contexts/DashboardContext";
 
-import { api } from "../../../../api";
-
 import trash from "../../../../assets/img/trash-can.png";
 
 export const Technologies = ({ setModalState }) => {
-	const { userInfo: user, setUserInfo } = useContext(DashboardContext);
-
-	const deleteTech = async (id) => {
-		await api.delete(`/users/techs/${id}`);
-		const userID = localStorage.getItem("@USERID");
-
-		const user = await api.get(`/users/${userID}`);
-		setUserInfo(user?.data);
-	};
+	const { userInfo: user, deleteTech } = useContext(DashboardContext);
 
 	return (
 		<Container>
