@@ -75,19 +75,10 @@ export const Modal = ({ setModalState }) => {
 				<div className="footer">
 					<Button
 						trype="submit"
-						CustomColor={"--color-primary-negative"}
+						CustomColor={"--color-primary"}
 						CustomColorHover={"--color-primary-focus"}
 					>
-						Salvar alterações
-					</Button>
-					<Button
-						CustomColor={"--gray-20"}
-						CustomColorHover={"--gray-50"}
-						onClick={() => {
-							setModalState(false);
-						}}
-					>
-						Excluir
+						Cadastrar Tecnologia
 					</Button>
 				</div>
 			</form>
