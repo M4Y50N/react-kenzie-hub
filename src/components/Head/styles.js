@@ -1,7 +1,13 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const StyledHead = styled.div`
 	width: 100%;
+
+	${({ MaxWidth }) => {
+		return css`
+			max-width: ${MaxWidth};
+		`;
+	}}
 
 	margin: 0 auto 2rem;
 
