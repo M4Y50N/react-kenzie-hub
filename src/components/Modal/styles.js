@@ -46,6 +46,7 @@ export const StyledModal = styled.div`
 
 		& > button {
 			padding: 1.5rem 2.5rem;
+			width: 100%;
 		}
 	}
 `;
