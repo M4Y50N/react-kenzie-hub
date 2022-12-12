@@ -1,9 +1,24 @@
 import { StyledButton } from "./styles";
 
-export const Button = ({ type, name, onClick, disable, children }) => {
+export const Button = ({
+	type,
+	name,
+	onClick,
+	disable,
+	CustomColor,
+	CustomColorHover,
+	children,
+}) => {
 	return (
 		<>
-			<StyledButton type={type} name={name} disable={disable} onClick={onClick}>
+			<StyledButton
+				type={type}
+				name={name}
+				disable={disable}
+				CustomColor={CustomColor}
+				CustomColorHover={CustomColorHover}
+				onClick={onClick}
+			>
 				{children}
 			</StyledButton>
 		</>

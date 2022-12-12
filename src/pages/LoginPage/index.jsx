@@ -18,6 +18,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 export const LoginPage = () => {
 	const { login, disable } = useContext(AuthContext),
 		[loading, setLoading] = useState(true);
+
 	const navigate = useNavigate();
 
 	const loginSchema = yup.object().shape({
@@ -52,7 +53,11 @@ export const LoginPage = () => {
 
 	return (
 		<Main>
-			<Title Position={"center"} Padding={"form-title"}>
+			<Title
+				Color={"--color-primary"}
+				Position={"center"}
+				Padding={"form-title"}
+			>
 				Kenzie Hub
 			</Title>
 			<Form onSubmit={handleSubmit(login)} noValidate>

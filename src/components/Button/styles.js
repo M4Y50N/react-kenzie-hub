@@ -12,6 +12,16 @@ export const StyledButton = styled.button`
 		background-color: var(--color-primary-focus);
 	}
 
+	${({ CustomColor, CustomColorHover }) => {
+		return css`
+			background-color: var(${CustomColor});
+
+			&:hover {
+				background-color: var(${CustomColorHover});
+			}
+		`;
+	}}
+
 	${({ disable }) => {
 		return disable
 			? css`
@@ -22,6 +32,6 @@ export const StyledButton = styled.button`
 						background-color: var(--gray-20);
 					}
 			  `
-			: false;
+			: ``;
 	}}
 `;

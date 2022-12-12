@@ -8,7 +8,7 @@ import { Label } from "../../components/Label";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
 import { Select } from "../../components/Select";
-import { FormHead } from "./FormHead";
+import { Head } from "../../components/Head";
 
 import { api } from "../../api";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -90,7 +90,14 @@ export const RegisterPage = () => {
 
 	return (
 		<Main>
-			<FormHead />
+			<Head
+				title={"Kenzie Hub"}
+				buttonContent={"Voltar"}
+				titleColor={"--color-primary"}
+				onClick={() => {
+					navigate("/");
+				}}
+			/>
 			<Form onSubmit={handleSubmit(submit)} noValidate>
 				<h2>Crie sua conta</h2>
 				<p>Rapido grátis, vamos nessa</p>
