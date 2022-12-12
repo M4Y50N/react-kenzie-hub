@@ -8,11 +8,11 @@ export const UserInfo = () => {
 	const { userInfo: user } = useContext(DashboardContext);
 
 	return (
-		<Container BoxShadow={true}>
-			<StyledUserInfo>
+		<StyledUserInfo>
+			<Container>
 				<Title>Olá, {user.name}</Title>
 				<p>{user.course_module}</p>
-			</StyledUserInfo>
-		</Container>
+			</Container>
+		</StyledUserInfo>
 	);
 };

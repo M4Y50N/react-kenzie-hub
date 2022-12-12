@@ -9,8 +9,8 @@ export const Header = () => {
 	const navigate = useNavigate();
 
 	return (
-		<Container BoxShadow={true}>
-			<StyledHeader>
+		<StyledHeader>
+			<Container>
 				<Title Color={"--color-primary"}>Kenzie Hub</Title>
 				<Button
 					CustomColor={"--gray-50"}
@@ -22,7 +22,7 @@ export const Header = () => {
 				>
 					Sair
 				</Button>
-			</StyledHeader>
-		</Container>
+			</Container>
+		</StyledHeader>
 	);
 };

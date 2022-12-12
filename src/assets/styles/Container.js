@@ -15,12 +15,4 @@ export const Container = styled.div`
 				return css``;
 		}
 	}}
-
-	${({ BoxShadow }) => {
-		return BoxShadow
-			? css`
-					box-shadow: 0 1px 0 var(--gray-50);
-			  `
-			: ``;
-	}}
 `;
