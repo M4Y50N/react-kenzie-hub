@@ -4,9 +4,15 @@ import { StyledHead } from "./styles";
 //Components
 import { Button } from "../Button";
 
-export const Head = ({ title, onClick, buttonContent, titleColor }) => {
+export const Head = ({
+	title,
+	onClick,
+	buttonContent,
+	titleColor,
+	MaxWidth,
+}) => {
 	return (
-		<StyledHead>
+		<StyledHead MaxWidth={MaxWidth}>
 			<Title Color={titleColor}>{title}</Title>
 			<Button
 				CustomColor={"--gray-50"}

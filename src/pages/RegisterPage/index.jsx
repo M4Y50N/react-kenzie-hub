@@ -94,6 +94,7 @@ export const RegisterPage = () => {
 				title={"Kenzie Hub"}
 				buttonContent={"Voltar"}
 				titleColor={"--color-primary"}
+				MaxWidth={"37rem"}
 				onClick={() => {
 					navigate("/");
 				}}
