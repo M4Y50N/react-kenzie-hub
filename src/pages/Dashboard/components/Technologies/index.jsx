@@ -1,5 +1,5 @@
 import { Container } from "../../../../assets/styles/Container";
-import { StyledTechnologies } from "./styles";
+import { StyledTechnologies, StyledUl } from "./styles";
 import { Head } from "../../../../components/Head";
 import { useContext } from "react";
 import { DashboardContext } from "../../../../contexts/DashboardContext";
@@ -18,7 +18,7 @@ export const Technologies = () => {
 					}}
 				/>
 
-				<ul>
+				<StyledUl>
 					{user.techs.map((tech, i) => {
 						return (
 							<li key={i}>
@@ -27,7 +27,7 @@ export const Technologies = () => {
 							</li>
 						);
 					})}
-				</ul>
+				</StyledUl>
 			</StyledTechnologies>
 		</Container>
 	);
