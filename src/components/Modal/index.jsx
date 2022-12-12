@@ -1,12 +1,16 @@
-import { Button } from "../Button";
-import { Label } from "../Label";
-import { Input } from "../Input";
-import { StyledModal } from "./styles";
-import { useForm } from "react-hook-form";
-import { Select } from "../Select";
-import { api } from "../../api";
 import { useContext } from "react";
+import { useForm } from "react-hook-form";
+//Styled Components
+import { StyledModal } from "./styles";
+//Components
+import { Button } from "../Button";
+import { Select } from "../Select";
+import { Input } from "../Input";
+import { Label } from "../Label";
+
 import { DashboardContext } from "../../contexts/DashboardContext";
+
+import { api } from "../../api";
 
 export const Modal = ({ setModalState }) => {
 	const { register, handleSubmit, setValue } = useForm();
