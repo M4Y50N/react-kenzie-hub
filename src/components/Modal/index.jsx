@@ -10,12 +10,10 @@ import { Label } from "../Label";
 
 import { DashboardContext } from "../../contexts/DashboardContext";
 
-import { api } from "../../api";
-
 export const Modal = ({ setModalState }) => {
 	const { register, handleSubmit, setValue } = useForm();
 
-	const { setUserInfo } = useContext(DashboardContext);
+	const { addTech } = useContext(DashboardContext);
 
 	const options = [
 		{ value: "Iniciante" },
@@ -23,22 +21,9 @@ export const Modal = ({ setModalState }) => {
 		{ value: "Avançado" },
 	];
 
-	const submit = async (data) => {
-		const userID = localStorage.getItem("@USERID");
-		try {
-			await api.post("/users/techs", data);
-
-			const user = await api.get(`/users/${userID}`);
-			setUserInfo(user?.data);
-			setModalState(false);
-		} catch (error) {
-			console.log(error);
-		}
-	};
-
 	return (
 		<StyledModal>
-			<form onSubmit={handleSubmit(submit)} noValidate>
+			<form onSubmit={handleSubmit(addTech)} noValidate>
 				<div className="topHeader">
 					<h3>Tecnologia Detalhes</h3>
 					<Button

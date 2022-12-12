@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 //Components
 import { Header } from "../../components/Header";
 import { Modal } from "../../components/Modal";
@@ -8,8 +8,7 @@ import { UserInfo } from "./components/UserInfo";
 import { DashboardContext } from "../../contexts/DashboardContext";
 
 export const Dashboard = () => {
-	const { loading } = useContext(DashboardContext),
-		[modalState, setModalState] = useState(false);
+	const { loading, modalState, setModalState } = useContext(DashboardContext);
 
 	if (loading) {
 		return null;
