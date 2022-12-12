@@ -28,6 +28,7 @@ export const AuthProvider = ({ children }) => {
 				setUser(data);
 			} catch (error) {
 				console.log(error);
+				localStorage.clear();
 			} finally {
 				setLoading(false);
 			}
