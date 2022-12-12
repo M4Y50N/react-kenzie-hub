@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import { api } from "../api";
 
 export const AuthContext = createContext({});
@@ -62,7 +63,9 @@ export const AuthProvider = ({ children }) => {
 	};
 
 	return (
-		<AuthContext.Provider value={{ login, disable, user, loading }}>
+		<AuthContext.Provider
+			value={{ login, disable, setDisable, user, loading, setLoading }}
+		>
 			{children}
 		</AuthContext.Provider>
 	);
