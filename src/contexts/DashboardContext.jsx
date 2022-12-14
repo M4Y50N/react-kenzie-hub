@@ -6,7 +6,9 @@ export const DashboardContext = createContext({});
 export const DashboardProvider = ({ children }) => {
 	const [userInfo, setUserInfo] = useState(),
 		[loading, setLoading] = useState(true),
-		[modalState, setModalState] = useState(false);
+		[modalState, setModalState] = useState(false),
+		[modalValues, setModalValues] = useState({}),
+		[addOrEdit, setAddOrEdit] = useState(true);
 
 	useEffect(() => {
 		const getUser = async () => {
@@ -43,6 +45,22 @@ export const DashboardProvider = ({ children }) => {
 		}
 	};
 
+	const editTech = async (data) => {
+		const techID = modalValues?.id,
+			userID = localStorage.getItem("@USERID");
+
+		try {
+			await api.put(`/users/techs/${techID}`, data);
+
+			const user = await api.get(`/users/${userID}`);
+
+			setUserInfo(user?.data);
+			setModalState(false);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
 	const deleteTech = async (id) => {
 		await api.delete(`/users/techs/${id}`);
 		const userID = localStorage.getItem("@USERID");
@@ -56,9 +74,14 @@ export const DashboardProvider = ({ children }) => {
 			value={{
 				userInfo,
 				setUserInfo,
+				addOrEdit,
+				setAddOrEdit,
+				modalValues,
+				setModalValues,
 				modalState,
 				setModalState,
 				addTech,
+				editTech,
 				deleteTech,
 				loading,
 			}}

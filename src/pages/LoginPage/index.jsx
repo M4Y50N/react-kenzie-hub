@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 //Styled Components
 import { Main } from "../../assets/styles/Main";
-import { Title } from "../../assets/styles/Typography";
+import { P, Title } from "../../assets/styles/Typography";
 //Components
 import { FormContainer as Form } from "../../components/Form/styles";
 import { Label } from "../../components/Label";
@@ -70,7 +70,7 @@ export const LoginPage = () => {
 					placeholder="Digite aqui seu email"
 					register={register}
 				/>
-				{errors.email?.message && <p>{errors.email.message}</p>}
+				{errors.email?.message && <P>{errors.email.message}</P>}
 
 				<Label htmlFor="password" children="Senha" />
 				<Input
@@ -81,11 +81,13 @@ export const LoginPage = () => {
 					register={register}
 				/>
 
+				{errors.password?.message && <P>{errors.password.message}</P>}
+
 				<Button disable={disable} type="submit">
 					Entrar
 				</Button>
 
-				<p>Ainda não possui conta?</p>
+				<P>Ainda não possui conta?</P>
 
 				<Link to="/register">Cadastre-se</Link>
 			</Form>

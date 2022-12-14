@@ -22,7 +22,7 @@ export const FormContainer = styled.form`
 		font-size: var(--title);
 	}
 
-	p {
+	h4 {
 		margin-top: 1.5rem;
 		margin-bottom: 0.7rem;
 		text-align: center;
@@ -46,5 +46,9 @@ export const FormContainer = styled.form`
 
 	a:hover {
 		background-color: var(--gray-50);
+	}
+
+	button {
+		margin-top: 1rem;
 	}
 `;

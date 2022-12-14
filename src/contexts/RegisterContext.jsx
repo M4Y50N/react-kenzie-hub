@@ -28,7 +28,10 @@ export const RegisterProvider = ({ children }) => {
 			.required("O email é obrigatório")
 			.email("Digite um email válido"),
 		password: yup.string().required("A senha é obrigatória"),
-		confirm_password: yup.string().required("A senha é obrigatória"),
+		confirm_password: yup
+			.string()
+			.required("A confirmação da senha é obrigatória")
+			.oneOf([yup.ref("password")], "As senhas precisam ser iguais"),
 		bio: yup.string().max(500, "A bio pode ter no máximo 500 caracteres"),
 		contact: yup.string().required("O contato é obrigatório"),
 		course_module: yup.string().required("Escolha uma opção válida"),

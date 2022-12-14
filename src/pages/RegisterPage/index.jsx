@@ -11,6 +11,7 @@ import { Head } from "../../components/Head";
 
 import { useNavigate } from "react-router-dom";
 import { RegisterContext } from "../../contexts/RegisterContext";
+import { P } from "../../assets/styles/Typography";
 
 export const RegisterPage = () => {
 	const {
@@ -60,7 +61,7 @@ export const RegisterPage = () => {
 			/>
 			<Form onSubmit={handleSubmit(registerUser)} noValidate>
 				<h2>Crie sua conta</h2>
-				<p>Rapido grátis, vamos nessa</p>
+				<h4>Rapido grátis, vamos nessa</h4>
 
 				<Label htmlFor="name">Nome</Label>
 				<Input
@@ -71,7 +72,7 @@ export const RegisterPage = () => {
 					register={register}
 				/>
 
-				{errors.name?.message && <p>{errors.name.message}</p>}
+				{errors.name?.message && <P>{errors.name.message}</P>}
 
 				<Label htmlFor="email">Email</Label>
 				<Input
@@ -82,7 +83,7 @@ export const RegisterPage = () => {
 					register={register}
 				/>
 
-				{errors.email?.message && <p>{errors.email.message}</p>}
+				{errors.email?.message && <P>{errors.email.message}</P>}
 
 				<Label htmlFor="password">Senha</Label>
 				<Input
@@ -93,7 +94,7 @@ export const RegisterPage = () => {
 					register={register}
 				/>
 
-				{errors.password?.message && <p>{errors.password.message}</p>}
+				{errors.password?.message && <P>{errors.password.message}</P>}
 
 				<Label htmlFor="confirm_password">Confirmar Senha</Label>
 				<Input
@@ -105,7 +106,7 @@ export const RegisterPage = () => {
 				/>
 
 				{errors.confirm_password?.message && (
-					<p>{errors.confirm_password.message}</p>
+					<P>{errors.confirm_password.message}</P>
 				)}
 
 				<Label htmlFor="bio">Bio</Label>
@@ -117,7 +118,7 @@ export const RegisterPage = () => {
 					register={register}
 				/>
 
-				{errors.bio?.message && <p>{errors.bio.message}</p>}
+				{errors.bio?.message && <P>{errors.bio.message}</P>}
 
 				<Label htmlFor="contact">Contato</Label>
 				<Input
@@ -127,7 +128,7 @@ export const RegisterPage = () => {
 					placeholder="Opção de contato"
 					register={register}
 				/>
-				{errors.contact?.message && <p>{errors.contact.message}</p>}
+				{errors.contact?.message && <P>{errors.contact.message}</P>}
 
 				<Label htmlFor="course_module">Selecionar Módulo</Label>
 				<Select
@@ -140,7 +141,7 @@ export const RegisterPage = () => {
 					register={register}
 				/>
 
-				{errors.course_module?.message && <p>{errors.course_module.message}</p>}
+				{errors.course_module?.message && <P>{errors.course_module.message}</P>}
 
 				<Button type="submit" disable={disable}>
 					Cadastrar

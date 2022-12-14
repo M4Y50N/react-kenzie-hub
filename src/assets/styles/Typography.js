@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { appearAnimation } from "./Animation";
 
 export const Title = styled.h1`
 	font-weight: 600;
@@ -35,4 +36,13 @@ export const Title = styled.h1`
 				`;
 		}
 	}}
+`;
+
+export const P = styled.p`
+	margin: 0.3rem 0;
+	text-align: center;
+	font-size: var(--headline);
+	color: var(--gray-20);
+
+	animation: ${appearAnimation} 0.3s ease;
 `;

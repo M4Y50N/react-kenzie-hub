@@ -1,4 +1,5 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
+import { appearAnimation } from "./Animation";
 
 export const Main = styled.main`
 	min-height: 100%;
@@ -9,9 +10,5 @@ export const Main = styled.main`
 	align-items: center;
 	justify-content: center;
 
-	${({ animation }) => {
-		return css`
-			animation: ${animation} 1s ease;
-		`;
-	}}
+	animation: ${appearAnimation} 1s ease;
 `;

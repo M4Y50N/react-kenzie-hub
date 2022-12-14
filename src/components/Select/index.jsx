@@ -7,6 +7,7 @@ export const Select = ({
 	id,
 	name,
 	placeholder,
+	value,
 	setValue,
 	attribute,
 	options,
@@ -40,7 +41,7 @@ export const Select = ({
 					type="text"
 					id={id}
 					name={name}
-					value={selectedOption.current}
+					value={!selectedOption.current ? value : selectedOption.current}
 					placeholder={placeholder}
 					{...register(name)}
 					readOnly
